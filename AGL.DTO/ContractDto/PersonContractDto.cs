@@ -2,20 +2,20 @@
 using System;
 using System.Collections.Generic;
 
-namespace AGL.Dto
+namespace AGL.Dto.ContractDto
 {
-    public class Person
+    public class PersonContractDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("gender")]
-        public GenderType Gender { get; set; }
+        public GenderTypeEnum Gender { get; set; }
 
         [JsonProperty("age")]
         public int Age { get; set; }
 
         [JsonProperty("pets")]
-        public IList<Pet> Pets { get; set; }
+        public List<PetContractDto> Pets { get; set; }
     }
 }

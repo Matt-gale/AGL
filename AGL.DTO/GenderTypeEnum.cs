@@ -1,6 +1,6 @@
 ﻿namespace AGL.Dto
 {
-    public enum GenderType
+    public enum GenderTypeEnum
     {
         Male,
         Female

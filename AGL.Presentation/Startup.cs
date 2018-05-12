@@ -26,7 +26,6 @@ namespace AGL.Presentation
             services.AddMvc();
 
             services.AddOptions();
-            services.AddSingleton(Configuration);
 
             //dependency injection
             services.AddScoped<IPeopleBusinessLogic, PeopleBusinessLogic>();
@@ -45,6 +44,8 @@ namespace AGL.Presentation
             {
                 app.UseExceptionHandler("/People/Error");
             }
+
+            app.UseStatusCodePages();
 
             app.UseStaticFiles();
 

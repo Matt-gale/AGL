@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGL.Dto
+namespace AGL.Dto.ContractDto
 {
-    public class Pet
+    public class PetContractDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public PetType Type { get; set; }
+        public PetTypeEnum Type { get; set; }
     }
 }
