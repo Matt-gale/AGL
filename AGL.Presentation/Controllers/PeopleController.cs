@@ -20,6 +20,9 @@ namespace AGL.Presentation.Controllers
             _peopleBusinessLogic = peopleBusinessLogic;
         }
 
+        /// <summary>
+        /// Gets a list of people from the business layer in the correct view structure.
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             try
@@ -55,6 +58,9 @@ namespace AGL.Presentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Returns contact details from the razor view
+        /// </summary>
         public IActionResult Contact()
         {
             return View();

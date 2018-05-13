@@ -11,7 +11,10 @@ namespace AGL.ExternalServices
 {
     public abstract class BaseExternalService
     {
-        public async Task<Response<string>> Get(Uri uri, Dictionary<string, string> Headers = null)
+        /// <summary>
+        /// A simple Http Request that returns a string or error
+        /// </summary>
+        public async Task<Response<string>> GetString(Uri uri, Dictionary<string, string> Headers = null)
         {
             var response = new Response<string>();
 

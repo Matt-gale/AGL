@@ -54,6 +54,12 @@ namespace AGL.Presentation
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=People}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    "NotFound",
+                    "{*url}",
+                    new { controller = "People", action = "Error" }
+                );
             });
         }
     }

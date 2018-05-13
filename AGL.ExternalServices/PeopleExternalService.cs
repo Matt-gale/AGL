@@ -20,13 +20,17 @@ namespace AGL.ExternalServices
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Returns a List of PersonDto's or failure with errors.
+        /// </summary>
+        /// <returns></returns>
         public async Task<Response<List<PersonContractDto>>> GetPeople()
         {
             var response = new Response<List<PersonContractDto>>();
 
             var uri = new Uri(_configuration["PeopleUrl"]);
 
-            var peopleResponse = await Get(uri);
+            var peopleResponse = await GetString(uri);
             if (peopleResponse.ResponseStatus == ResponseStatusEnum.Failure)
             {
                 response.Errors.AddRange(peopleResponse.Errors);

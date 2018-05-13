@@ -10,6 +10,10 @@ namespace AGL.BusinessLogic
 {
     public interface IPeopleBusinessLogic
     {
+        /// <summary>
+        /// Retrieves People from the external web service and outputs a list of all the cats in alphabetical order 
+        /// under a heading of the gender of their owner.
+        /// </summary>
         Task<Response<List<GenderViewDto>>> GetPeople();
     }
 }

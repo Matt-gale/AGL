@@ -20,10 +20,15 @@ namespace AGL.BusinessLogic
             _peopleExternalService = peopleExternalService;
         }
 
+        /// <summary>
+        /// Retrieves People from the external web service and outputs a list of all the cats in alphabetical order 
+        /// under a heading of the gender of their owner.
+        /// </summary>
         public async Task<Response<List<GenderViewDto>>> GetPeople()
         {
             var response = new Response<List<GenderViewDto>>();
 
+            //retrieve the people data from the web service.
             var peopleResponse = await _peopleExternalService.GetPeople();
             if(peopleResponse.ResponseStatus == ResponseStatusEnum.Failure)
             {
@@ -31,7 +36,8 @@ namespace AGL.BusinessLogic
                 return response;
             }
 
-            var cats = peopleResponse.Data
+            //transforms the data from the web service into a list of genders that can be consumed by the presentation layer.
+            var cats = peopleResponse.Data?
                 .Where(person => person.Pets != null) // owner must have a pet
                 .Where(person => person.Pets.Any(pet => pet.Type == PetTypeEnum.Cat)) // owner must have a cat
                 .GroupBy(person => person.Gender, // group by gender (male/female)
@@ -49,7 +55,7 @@ namespace AGL.BusinessLogic
                             }).ToList()
                     });
 
-            response.Data = cats.ToList();
+            response.Data = cats?.ToList();
             return response;
         }
     }
